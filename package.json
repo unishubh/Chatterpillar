@@ -23,6 +23,7 @@
     "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "i18n": "^0.13.2",
     "jsonwebtoken": "^8.5.1",
     "ngrok": "^3.2.7",
     "nodemon": "^2.0.4",

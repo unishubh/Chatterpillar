@@ -1,0 +1,28 @@
+{
+  "welcome": {
+    "type": "quick_reply",
+    "text":"Choose a Pill",
+    "options": [
+      "bluePill",
+      "redPill"
+    ]
+  },
+  "bluePill" : {
+    "content_type": "text",
+    "title": "Blue Pill",
+    "payload": "peace"
+  },
+  "redPill" : {
+    "content_type": "text",
+    "title": "Red Pill",
+    "payload": "truth"
+  },
+  "peace" : {
+    "type" : "text",
+    "text": "You get blissful ignorance"
+  },
+  "truth": {
+    "type": "text",
+    "text": "You get unpleasant truth"
+  }
+}

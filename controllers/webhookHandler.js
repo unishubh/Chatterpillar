@@ -1,4 +1,5 @@
 const request = require('request');
+const classifier = require('./classifier');
 const config = require('../helpers/config');
 
 const webhookVerifier = async (req, res) => {
@@ -20,10 +21,8 @@ const webhookVerifier = async (req, res) => {
   }
 };
 
-const webhookHandler = async (req, res) => {
-  console.log('webhook');
-  console.log(req);
-  res.status(200).send('EVENT_RECEIVED');
+const sendReply = async (senderPSID, reply) => {
+  console.log(reply);
   request(
     {
       uri: `${config.mPlatfom}/me/messages`,
@@ -33,11 +32,9 @@ const webhookHandler = async (req, res) => {
       method: 'POST',
       json: {
         recipient: {
-          id: this.user.psid,
+          id: senderPSID,
         },
-        message: {
-          text: 'Hello, event recieved',
-        },
+        message: reply,
       },
     },
     (error) => {
@@ -46,6 +43,24 @@ const webhookHandler = async (req, res) => {
       }
     },
   );
+};
+
+const webhookHandler = async (req, res) => {
+  console.log('webhook');
+  res.sendStatus(200);
+  const { entry } = req.body;
+  for (let i = 0; i < entry.length; i += 1) {
+    const event = entry[i];
+    const messageObject = event.messaging[0];
+    if (messageObject.hasOwnProperty('message')) {
+      const senderPSID = messageObject.sender.id;
+      const ourReply = await classifier.classifyMessage(messageObject.message);
+      sendReply(senderPSID, ourReply);
+    } else {
+      // others fields to be implemented
+      console.log('Ack recieved');
+    }
+  }
 };
 
 module.exports = {

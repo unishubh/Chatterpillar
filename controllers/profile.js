@@ -1,5 +1,6 @@
 const config = require('../helpers/config');
-const GraphAPi = require('../helpers/config');
+const GraphAPi = require('../helpers/graph-api');
+const ProfileService = require('../services/profile');
 
 const profile = async (req, res) => {
   const token = req.query.verify_token;
@@ -8,8 +9,7 @@ const profile = async (req, res) => {
   if (!config.webhookUrl.startsWith('https://')) {
     res.status(200).send('ERROR - Need a proper API_URL in the .env file');
   }
-  let Profile = require('./profile.js');
-  Profile = new Profile();
+  const Profile = new ProfileService();
 
   // Checks if a token and mode is in the query string of the request
   if (mode && token) {
