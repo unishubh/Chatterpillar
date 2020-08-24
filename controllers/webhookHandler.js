@@ -57,7 +57,7 @@ const webhookHandler = async (req, res) => {
       const ourReply = await classifier.classifyMessage(messageObject.message);
       sendReply(senderPSID, ourReply);
     } else {
-      // others fields to be implemented
+      // others types of events to be implemented
       console.log('Ack recieved');
     }
   }

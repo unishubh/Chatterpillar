@@ -12,7 +12,7 @@ const assign = async (identifier) => {
   } else if (type === 'quick_reply') {
     ourReply = await buildResponse.quickReply(identifier);
   } else {
-    // to be expanded
+    // support for more types of responses to be added
   }
   return ourReply;
 };
