@@ -1,7 +1,7 @@
 // Imports dependencies
-const GraphAPi = require('../helpers/graph-api');
+const GraphAPi = require('./graph-api');
 const i18n = require('../i18n.config');
-const config = require('../helpers/config');
+const config = require('./config');
 
 const locales = i18n.getLocales();
 
@@ -19,6 +19,7 @@ module.exports = class Profile {
     GraphAPi.callMessengerProfileAPI(profilePayload);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   setPersonas() {
     const { newPersonas } = config;
 

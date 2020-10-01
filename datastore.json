@@ -1,28 +1,49 @@
 {
-  "welcome": {
-    "type": "quick_reply",
-    "text":"Choose a Pill",
-    "options": [
-      "bluePill",
-      "redPill"
+  "GET_STARTED":{
+    "title": "get started",
+    "type": "postback",
+    "child":[
+      "RISK_OPTION",
+      "PLAN_GOAL_OPTION",
+      "PERSONAL_SUPPORT_OPTION"
+    ],
+    "text":[
+      "Welcome line",
+      "greeting"
     ]
   },
-  "bluePill" : {
-    "content_type": "text",
-    "title": "Blue Pill",
-    "payload": "peace"
+  "RISK_OPTION":{
+    "title": "check risk degree",
+    "type": "postback",
+    "child":[
+      "NAME"
+    ],
+    "text":[]
   },
-  "redPill" : {
-    "content_type": "text",
-    "title": "Red Pill",
-    "payload": "truth"
-  },
-  "peace" : {
-    "type" : "text",
-    "text": "You get blissful ignorance"
-  },
-  "truth": {
+  "NAME":{
+    "title": "Enter your name",
     "type": "text",
-    "text": "You get unpleasant truth"
+    "child": [
+      "AGE"
+    ],
+    "text":[]
+  },
+  "AGE":{
+    "title": "Enter your age",
+    "type": "text",
+    "child": [],
+    "text": []
+  },
+  "PLAN_GOAL_OPTIOM": {
+    "title": "plan for goals",
+    "type": "postback",
+    "child":[],
+    "text":[]
+  },
+  "PERSONAL_SUPPORT_OPTION": {
+    "title": "connect for personal support",
+    "type": "postback",
+    "child":[],
+    "text":[]
   }
 }
