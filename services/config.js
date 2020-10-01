@@ -110,12 +110,14 @@ module.exports = {
     ENV_VARS.forEach((key) => {
       if (!process.env[key]) {
         console.log(`WARNING: Missing the environment variable ${key}`);
-      }
-      // Check that urls use https
-      if (['APP_URL', 'SHOP_URL'].includes(key)) {
+      } else if (['APP_URL', 'SHOP_URL'].includes(key)) {
+        // Check that urls use https
+
         const url = process.env[key];
         if (!url.startsWith('https://')) {
-          console.log(`WARNING: Your ${key} does not begin with "https://"`);
+          console.log(
+            `WARNING: Your ${key} does not begin with "https://"`,
+          );
         }
       }
     });

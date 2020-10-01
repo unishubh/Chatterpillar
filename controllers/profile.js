@@ -1,5 +1,5 @@
-const config = require('../helpers/config');
-const GraphAPi = require('../helpers/graph-api');
+const config = require('../services/config');
+const GraphAPi = require('../services/graph-api');
 const ProfileService = require('../services/profile');
 
 const profile = async (req, res) => {
@@ -28,8 +28,7 @@ const profile = async (req, res) => {
         Profile.setPersonas();
         res.write(`<p>Set Personas for ${config.appId}</p>`);
         res.write(
-          '<p>To persist the personas, add the following variables \
-                    to your environment variables:</p>',
+          '<p>To persist the personas, add the following variables to your environment variables:</p>',
         );
         res.write('<ul>');
         res.write(`<li>PERSONA_BILLING = ${config.personaBilling.id}</li>`);
